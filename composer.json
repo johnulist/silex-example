@@ -1,0 +1,23 @@
+{
+  "name": "kusflo/silex-example",
+  "description": "Sample project with silex framework",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Marcos Redondo",
+      "email": "kusflo@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "UserInfo\\": "src/",
+      "UserInfo\\Test\\": "test/"
+    }
+  },
+  "require": {
+    "silex/silex": "^2.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.2"
+  }
+}

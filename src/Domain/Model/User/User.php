@@ -10,15 +10,15 @@ class User
     /**
      * @var UserId
      */
-    private $userId;
+    protected $userId;
     /**
      * @var string
      */
-    private $firstName;
+    protected $firstName;
     /**
      * @var string
      */
-    private $lastName;
+    protected $lastName;
     
     /**
      * User constructor.
@@ -31,5 +31,29 @@ class User
         $this->userId = $userId;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+    }
+    
+    /**
+     * @return UserId
+     */
+    public function getUserId(): UserId
+    {
+        return $this->userId;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
     }
 }

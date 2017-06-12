@@ -1,0 +1,13 @@
+UserInfo\Domain\Model\User\User:
+  type: entity
+  id:
+    userId:
+      column: id
+      type: UserId
+  table: ui_user
+  repositoryClass: UserInfo\Infrastructure\Domain\Model\User\DoctrineUserRepository
+  fields:
+    firstName:
+      type: string
+    lastName:
+      type: string

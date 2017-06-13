@@ -2,6 +2,8 @@
 /**
  * @author Marcos Redondo <kusflo@gmail.com>
  */
+use UserInfo\Application\Service\User\AddUserRequest;
+use UserInfo\Application\Service\User\UserRequest;
 use UserInfo\Domain\Model\User\User;
 use UserInfo\Domain\Model\User\UserId;
 
@@ -17,16 +19,32 @@ $app->get('/', function () use ($app) {
     return $app['twig']->render('layout.html.twig');
 })->bind('home');
 /*******************/
-$app->get('/{firstname}/{lastname}', function ($firstname, $lastname) use ($app) {
-    $user = new User(new UserId(), $firstname, $lastname);
+$app->get('/id/{id}', function ($id) use ($app) {
+    /**@var $user User */
+    $user = $app['view_user_application_service']->execute(
+        new UserRequest(new UserId($id))
+    );
     
     return $app['twig']->render('username.html.twig', array(
             'user' => array(
-                'name' => $user->getUserId() . ' ' . $user->getFirstName() . ' ' . $user->getLastName()
+                'name' => ' Usuario recuperado: ' . $user->getFirstName() . ' ' . $user->getLastName()
             )
         )
     );
-})->bind('user');
+})->bind('user_view');
+/*******************/
+$app->get('/add/{firstname}/{lastname}', function ($firstname, $lastname) use ($app) {
+    $app['add_user_application_service']->execute(
+        new AddUserRequest($firstname, $lastname)
+    );
+    
+    return $app['twig']->render('username.html.twig', array(
+            'user' => array(
+                'name' => ' Usuario añadido: ' . $firstname . ' ' . $lastname
+            )
+        )
+    );
+})->bind('user_add');
 /*******************/
 $app->run();
 

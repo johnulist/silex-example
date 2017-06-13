@@ -14,6 +14,13 @@ interface UserRepository
     public function ofId(UserId $userId);
     
     /**
+     * @param string $firstname
+     * @param string $lastname
+     * @return User
+     */
+    public function ofFirstNameAndLastName($firstname, $lastname);
+    
+    /**
      * @param User $user
      */
     public function add(User $user);

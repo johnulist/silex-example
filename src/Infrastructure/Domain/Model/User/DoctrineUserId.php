@@ -16,6 +16,6 @@ class DoctrineUserId extends DoctrineEntityId
     
     public function getNamespace()
     {
-        return 'UserInfo/Domain/Model/User';
+        return 'UserInfo\Domain\Model\User';
     }
 }

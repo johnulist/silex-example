@@ -17,6 +17,14 @@ class DoctrineUserRepository extends EntityRepository implements UserRepository
         return $this->find($userId);
     }
     
+    public function ofFirstNameAndLastName($firstName, $lastName)
+    {
+        return $this->findOneBy(['firstName' => $firstName, 'lastName' => $lastName]);
+    }
+    
+    /**
+     * @param User $user
+     */
     public function add(User $user)
     {
         $this->getEntityManager()->persist($user);

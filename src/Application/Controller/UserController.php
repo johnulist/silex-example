@@ -32,7 +32,7 @@ class UserController
     public function addUser(Request $request, Application $app)
     {
         $firstName = $request->attributes->get("firstname");
-        $lastName = $request->attributes->get("firstname");
+        $lastName = $request->attributes->get("lastname");
         $app['add_user_application_service']->execute(
             new AddUserRequest($firstName, $lastName)
         );

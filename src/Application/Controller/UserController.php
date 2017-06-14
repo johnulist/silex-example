@@ -29,19 +29,29 @@ class UserController
         );
     }
     
+    public function getUserHome(Request $request, Application $app)
+    {
+        return $app['twig']->render('user-form.html.twig', array('route' => '/user/add'));
+    }
+    
     public function addUser(Request $request, Application $app)
     {
-        $firstName = $request->attributes->get("firstname");
-        $lastName = $request->attributes->get("lastname");
-        $app['add_user_application_service']->execute(
-            new AddUserRequest($firstName, $lastName)
-        );
-        
-        return $app['twig']->render('username.html.twig', array(
-                'user' => array(
-                    'name' => ' Usuario añadido: ' . $firstName . ' ' . $lastName
+        if ($request->isMethod('POST')) {
+            $firstName = $request->request->get("firstname");
+            $lastName = $request->request->get("lastname");
+            $app['add_user_application_service']->execute(
+                new AddUserRequest($firstName, $lastName)
+            );
+            $message = ' Usuario añadido: ' . $firstName . ' ' . $lastName;
+            
+            return $app['twig']->render('username.html.twig', array(
+                    'user' => array(
+                        'name' => $message
+                    )
                 )
-            )
-        );
+            );
+        }
+        
+        return $app->redirect('/user');
     }
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Datos de Usuario</title>
+</head>
+<body>
+<div class="container">
+    <h1>Datos de Usuario</h1>
+    <form method="post" action="{{ route }}">
+        <input class="form-control" placeholder="Nombre" name="firstname" type="text" maxlength="255"/><br/>
+        <input class="form-control" placeholder="Apellidos" name="lastname" type="text" maxlength="255"/><br/>
+        <button type="submit" name="aggregate" value="on" class="btn btn-inverse">Add user</button>
+    </form>
+</div>
+<footer>
+</footer>
+
+</body>
+</html>

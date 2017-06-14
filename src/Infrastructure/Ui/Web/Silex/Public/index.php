@@ -18,10 +18,11 @@ $app->get('/', function () use ($app) {
 })->bind('home');
 /*******************/
 // Get User
+$app->get('/user', 'UserInfo\\Application\\Controller\\UserController::getUserHome');
 $app->get('/id/{id}', 'UserInfo\\Application\\Controller\\UserController::getUser');
 /*******************/
 // Add User
-$app->get('/add/{firstname}/{lastname}', 'UserInfo\\Application\\Controller\\UserController::addUser');
+$app->post('/user/add', 'UserInfo\\Application\\Controller\\UserController::addUser');
 /*******************/
 // Error Handlers
 $app->error(function (\Exception $e, Request $request, $code) {

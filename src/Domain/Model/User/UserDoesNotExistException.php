@@ -3,7 +3,7 @@
  * @author Marcos Redondo <kusflo@gmail.com>
  */
 
-namespace UserInfo\Application\Service\User;
+namespace UserInfo\Domain\Model\User;
 
 use Exception;
 
